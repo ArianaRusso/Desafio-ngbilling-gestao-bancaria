@@ -5,6 +5,7 @@ import java.math.BigInteger;
 
 public class ContaBancaria {
 
+    private Long id;
     private Integer numeroConta;
     private BigDecimal saldo;
 
@@ -13,6 +14,9 @@ public class ContaBancaria {
         this.saldo = new BigDecimal(BigInteger.ZERO);
     }
 
+    public Long getId() {
+        return id;
+    }
     public Integer getNumeroConta() {
         return numeroConta;
     }

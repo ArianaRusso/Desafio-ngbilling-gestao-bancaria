@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface ContaGateway {
     Optional<ContaBancaria> findByNumero(Integer numero);
-    ContaBancaria save(ContaBancaria conta);
+    Optional<ContaBancaria> save(ContaBancaria conta);
 
 }

@@ -1,6 +1,7 @@
 package com.ngbilling.gestao_bancaria.core.enums;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 public enum FormaDePagamento {
 
@@ -14,6 +15,13 @@ public enum FormaDePagamento {
     FormaDePagamento(String descricao, BigDecimal taxa) {
         this.descricao = descricao;
         this.taxa = taxa;
+    }
+
+    public static FormaDePagamento fromCodigo(String codigo) {
+        return Arrays.stream(FormaDePagamento.values())
+                .filter(fp -> fp.name().equalsIgnoreCase(codigo))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Forma de pagamento inválida: " + codigo));
     }
 
     public String getDescricao() {

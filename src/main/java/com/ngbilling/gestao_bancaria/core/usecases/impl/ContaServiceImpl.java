@@ -11,7 +11,6 @@ import com.ngbilling.gestao_bancaria.core.usecases.CriarContaUseCase;
 import com.ngbilling.gestao_bancaria.core.usecases.ProcessarTransacaoUseCase;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ContaServiceImpl implements ConsultarContaUseCase, CriarContaUseCase, ProcessarTransacaoUseCase {
@@ -25,8 +24,9 @@ public class ContaServiceImpl implements ConsultarContaUseCase, CriarContaUseCas
     }
 
     @Override
-    public Optional<ContaBancaria> consultar(Integer numeroConta) {
-        return gateway.findByNumero(numeroConta);
+    public ContaBancaria consultar(Integer numeroConta) {
+        return gateway.findByNumero(numeroConta).
+                orElseThrow(() -> new ContaNaoEncontradaException("Conta numero " + numeroConta + "não encontrada"));
     }
 
     @Override
@@ -37,7 +37,8 @@ public class ContaServiceImpl implements ConsultarContaUseCase, CriarContaUseCas
         if (gateway.findByNumero(novaContaBancaria.getNumeroConta()).isPresent()) {
             throw new ContaJaExisteException("Conta " + novaContaBancaria + "já existe");
         }
-        return gateway.save(novaContaBancaria);
+        return gateway.save(novaContaBancaria)
+                .orElseThrow(() -> new RuntimeException("Erro ao salvar a conta " + novaContaBancaria));
     }
 
     @Override
