@@ -1,4 +1,4 @@
-package com.ngbilling.gestao_bancaria.application.enums;
+package com.ngbilling.gestao_bancaria.core.enums;
 
 import java.math.BigDecimal;
 

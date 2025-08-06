@@ -1,6 +1,6 @@
-package com.ngbilling.gestao_bancaria.application.entities;
+package com.ngbilling.gestao_bancaria.core.entities;
 
-import com.ngbilling.gestao_bancaria.application.enums.FormaDePagamento;
+import com.ngbilling.gestao_bancaria.core.enums.FormaDePagamento;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package com.ngbilling.gestao_bancaria.application.entities;
+package com.ngbilling.gestao_bancaria.core.entities;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
