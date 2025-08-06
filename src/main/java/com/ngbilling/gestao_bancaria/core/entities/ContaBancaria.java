@@ -20,4 +20,8 @@ public class ContaBancaria {
     public BigDecimal getSaldo() {
         return saldo;
     }
+
+    public void debitar(BigDecimal valorComTaxa) {
+        saldo = saldo.subtract(valorComTaxa);
+    }
 }
