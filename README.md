@@ -1,6 +1,6 @@
 # Gestão Bancária
 
-Projeto desenvolvido como parte de um desafio técnico para vaga de desenvolvedor Java backend.
+Projeto desenvolvido como parte de um desafio técnico para vaga de desenvolvedor Java Backend.
 
 ## ✅ Tecnologias Utilizadas
 
@@ -8,7 +8,15 @@ Projeto desenvolvido como parte de um desafio técnico para vaga de desenvolvedo
 - Spring Boot 3.5.4
 - PostgreSQL
 - Maven
-- Docker & Docker Compose
+- Docker Compose
+
+---
+
+## 📋 Pré-requisitos
+
+- Java 17+
+- Maven 3.9+
+- Docker e Docker Compose instalados
 
 ---
 
@@ -17,30 +25,35 @@ Projeto desenvolvido como parte de um desafio técnico para vaga de desenvolvedo
 ### 1. Clonar o repositório
 
 ```bash
-git https://github.com/ArianaRusso/Desafio-ngbilling-gestao-bancaria.git
-cd gestao-bancaria
+  git clone https://github.com/ArianaRusso/Desafio-ngbilling-gestao-bancaria.git
+  cd gestao-bancaria
 ```
 
 ### 2. Subir o banco de dados com Docker Compose
 
 ```bash
-docker-compose up -d
+  docker-compose up -d
 ```
 
-> Isso criará um container com o PostgreSQL e um banco chamado `gestao-bancaria`.
+> O `docker-compose.yml` cria um container PostgreSQL (`gestao-bancaria-db`) com:
+> - Banco: `gestao_bancaria`
+> - Usuário: `postgres`
+> - Senha: `postgres`
+> - Porta: `5432` (local) → `5432` (container)
+
 
 ### 3. Rodar a aplicação
 
 Use sua IDE ou terminal:
 
 ```bash
-./mvnw spring-boot:run
+  ./mvnw spring-boot:run
 ```
 
 ou
 
 ```bash
-mvn spring-boot:run
+  mvn spring-boot:run
 ```
 
 ---
@@ -63,8 +76,10 @@ gestao-bancaria/
 
 ## 🛠️ Próximas melhorias
 
-- Implementar versionamento do banco com Flyway ou Liquibase.
-- Adicionar testes automatizados.
+- [ ] Implementar versionamento do banco com Flyway ou Liquibase
+- [ ] Adicionar testes de integração e automatizados
+- [ ] Configurar aplicação para rodar no Docker junto com o banco
+
 ---
 
 
