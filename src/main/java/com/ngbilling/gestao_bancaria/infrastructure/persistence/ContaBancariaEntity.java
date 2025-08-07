@@ -27,6 +27,7 @@ public class ContaBancariaEntity {
     @Column(nullable = false, unique = true)
     private Integer numeroConta;
 
+    @Column(precision = 19, scale = 2)
     private BigDecimal saldo;
 
     public ContaBancariaEntity (ContaBancaria contaBancaria){

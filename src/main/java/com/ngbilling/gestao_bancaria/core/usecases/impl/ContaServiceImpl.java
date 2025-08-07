@@ -12,6 +12,7 @@ import com.ngbilling.gestao_bancaria.core.usecases.ProcessarTransacaoUseCase;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class ContaServiceImpl implements ConsultarContaUseCase, CriarContaUseCase, ProcessarTransacaoUseCase {
 
@@ -44,7 +45,9 @@ public class ContaServiceImpl implements ConsultarContaUseCase, CriarContaUseCas
                 .orElseThrow(() -> new ContaNaoEncontradaException("Conta numero " + numeroConta + "não encontrada"));
 
         BigDecimal taxa = formaPagamento.getTaxa();
-        BigDecimal valorComTaxa = valor.add(valor.multiply(taxa));
+        BigDecimal valorComTaxa = valor
+                .add(valor.multiply(taxa))
+                .setScale(2, RoundingMode.HALF_UP);
 
         if (conta.getSaldo().compareTo(valorComTaxa) < 0) {
             throw new SaldoInsuficienteException("Saldo da conta numero " + numeroConta + "é insuficiente para realizar transação" );
