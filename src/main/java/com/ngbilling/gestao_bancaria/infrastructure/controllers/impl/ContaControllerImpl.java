@@ -13,6 +13,10 @@ public class ContaControllerImpl implements ContaController {
 
     private CriarContaUseCase criarContaUseCase;
 
+    public ContaControllerImpl(ConsultarContaUseCase consultarContaUseCase, CriarContaUseCase criarContaUseCase) {
+        this.consultarContaUseCase = consultarContaUseCase;
+        this.criarContaUseCase = criarContaUseCase;
+    }
 
     @Override
     public ContaBancaria consultar(Integer numeroConta) {
@@ -20,7 +24,7 @@ public class ContaControllerImpl implements ContaController {
     }
 
     @Override
-    public ContaBancaria criarConta() {
-        return criarContaUseCase.criarConta();
+    public ContaBancaria criarConta(ContaBancaria conta) {
+        return criarContaUseCase.criarConta(conta);
     }
 }

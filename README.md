@@ -17,7 +17,7 @@ Projeto desenvolvido como parte de um desafio técnico para vaga de desenvolvedo
 ### 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/gestao-bancaria.git
+git https://github.com/ArianaRusso/Desafio-ngbilling-gestao-bancaria.git
 cd gestao-bancaria
 ```
 

@@ -21,12 +21,12 @@ public class ContaGatewayImpl implements ContaGateway {
 
     @Override
     public Optional<ContaBancaria> findByNumero(Integer numero) {
-        return repository.findByNumeroConta(numero).map(mapper::toDomain);
+        return repository.findByNumeroConta(numero).map(mapper::entityToConta);
     }
 
     @Override
     public Optional<ContaBancaria> save(ContaBancaria conta) {
         ContaBancariaEntity savedEntity = repository.save(new ContaBancariaEntity(conta));
-        return Optional.of(mapper.toDomain(savedEntity));
+        return Optional.of(mapper.entityToConta(savedEntity));
     }
 }

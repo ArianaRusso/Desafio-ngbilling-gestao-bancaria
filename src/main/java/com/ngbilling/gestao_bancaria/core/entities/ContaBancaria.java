@@ -9,9 +9,9 @@ public class ContaBancaria {
     private Integer numeroConta;
     private BigDecimal saldo;
 
-    public ContaBancaria(Integer numeroConta) {
+    public ContaBancaria(Integer numeroConta, BigDecimal saldo) {
         this.numeroConta = numeroConta;
-        this.saldo = new BigDecimal(BigInteger.ZERO);
+        this.saldo = saldo;
     }
 
     public Long getId() {

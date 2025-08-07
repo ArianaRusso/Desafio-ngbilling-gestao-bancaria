@@ -9,15 +9,13 @@ import com.ngbilling.gestao_bancaria.core.gateways.ContaGateway;
 import com.ngbilling.gestao_bancaria.core.usecases.ConsultarContaUseCase;
 import com.ngbilling.gestao_bancaria.core.usecases.CriarContaUseCase;
 import com.ngbilling.gestao_bancaria.core.usecases.ProcessarTransacaoUseCase;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ContaServiceImpl implements ConsultarContaUseCase, CriarContaUseCase, ProcessarTransacaoUseCase {
 
     private final ContaGateway gateway;
-
-    private static final AtomicInteger SEQUENCE = new AtomicInteger(1);
 
     public ContaServiceImpl(ContaGateway gateway) {
         this.gateway = gateway;
@@ -29,16 +27,15 @@ public class ContaServiceImpl implements ConsultarContaUseCase, CriarContaUseCas
                 orElseThrow(() -> new ContaNaoEncontradaException("Conta numero " + numeroConta + "não encontrada"));
     }
 
+    @Transactional
     @Override
-    public ContaBancaria criarConta() {
+    public ContaBancaria criarConta(ContaBancaria conta) {
 
-        ContaBancaria novaContaBancaria = new ContaBancaria(SEQUENCE.getAndIncrement());
-
-        if (gateway.findByNumero(novaContaBancaria.getNumeroConta()).isPresent()) {
-            throw new ContaJaExisteException("Conta " + novaContaBancaria + "já existe");
+        if (gateway.findByNumero(conta.getNumeroConta()).isPresent()) {
+            throw new ContaJaExisteException("Conta " + conta + "já existe");
         }
-        return gateway.save(novaContaBancaria)
-                .orElseThrow(() -> new RuntimeException("Erro ao salvar a conta " + novaContaBancaria));
+        return gateway.save(conta)
+                .orElseThrow(() -> new RuntimeException("Erro ao cadastrar conta " + conta));
     }
 
     @Override

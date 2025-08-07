@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface ContaController {
     ContaBancaria consultar(Integer numeroConta);
-    ContaBancaria criarConta ();
+    ContaBancaria criarConta (ContaBancaria conta);
 
 }

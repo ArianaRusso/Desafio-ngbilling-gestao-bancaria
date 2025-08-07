@@ -6,15 +6,15 @@ import java.math.BigDecimal;
 
 public class Transacao {
 
-    private Integer numeroConta;
+    private Integer numero_conta;
 
     private BigDecimal valor;
 
     private FormaDePagamento formaDePagamento;
 
 
-    public Transacao(Integer numeroConta, BigDecimal valor, FormaDePagamento formaDePagamento) {
-        this.numeroConta = numeroConta;
+    public Transacao(Integer numero_conta, BigDecimal valor, FormaDePagamento formaDePagamento) {
+        this.numero_conta = numero_conta;
         this.valor = valor;
         this.formaDePagamento = formaDePagamento;
     }
@@ -23,8 +23,8 @@ public class Transacao {
         return valor.add(valor.multiply(formaDePagamento.getTaxa()));
     }
 
-    public Integer getNumeroConta() {
-        return numeroConta;
+    public Integer getNumero_conta() {
+        return numero_conta;
     }
 
     public BigDecimal getValor() {

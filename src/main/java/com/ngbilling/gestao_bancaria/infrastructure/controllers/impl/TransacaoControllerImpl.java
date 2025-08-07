@@ -13,6 +13,10 @@ public class TransacaoControllerImpl implements TransacaoController {
 
     private ProcessarTransacaoUseCase processarTransacaoUseCase;
 
+    public TransacaoControllerImpl(ProcessarTransacaoUseCase processarTransacaoUseCase) {
+        this.processarTransacaoUseCase = processarTransacaoUseCase;
+    }
+
     @Override
     public ContaBancaria processarPagamento(Integer numeroConta, BigDecimal valor, FormaDePagamento formaPagamento) {
         return processarTransacaoUseCase.processarPagamento(numeroConta, valor, formaPagamento);
