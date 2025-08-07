@@ -9,7 +9,8 @@ public class ContaBancaria {
     private Integer numeroConta;
     private BigDecimal saldo;
 
-    public ContaBancaria(Integer numeroConta, BigDecimal saldo) {
+    public ContaBancaria(Long id, Integer numeroConta, BigDecimal saldo) {
+        this.id = id;
         this.numeroConta = numeroConta;
         this.saldo = saldo;
     }

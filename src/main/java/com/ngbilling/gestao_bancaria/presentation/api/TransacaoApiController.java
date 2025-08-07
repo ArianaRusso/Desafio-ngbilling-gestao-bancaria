@@ -24,17 +24,10 @@ public class TransacaoApiController {
 
     @PostMapping
     public ResponseEntity<ContaDto> criarTransacao(@RequestBody TransacaoRequest request) {
-        try {
-            FormaDePagamento forma = FormaDePagamento.fromCodigo(request.tipoTransacao());
-            ContaBancaria conta = controller.processarPagamento(request.numeroConta(), request.valor(), forma);
+        FormaDePagamento forma = FormaDePagamento.fromCodigo(request.tipoTransacao());
+        ContaBancaria conta = controller.processarPagamento(request.numeroConta(), request.valor(), forma);
 
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(new ContaDto(conta.getNumeroConta(), conta.getSaldo()));
-
-        } catch (ContaNaoEncontradaException | SaldoInsuficienteException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
-        }
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new ContaDto(conta.getNumeroConta(), conta.getSaldo()));
     }
 }
